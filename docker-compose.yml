@@ -19,7 +19,6 @@ services:
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
-      - /opt/alltrade-monitoring/logs:/home
     ports:
       - "5000:5000"
     environment:
