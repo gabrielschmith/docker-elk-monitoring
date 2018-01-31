@@ -1,0 +1,19 @@
+# Example Elastalert rule that will alert on spikes in the CPU load of
+# the monitored Mule CE ESB.
+name: CPU spike
+type: spike
+index: metricbeat-*
+threshold: 1
+timeframe:
+    minutes: 1
+spike_height: 2
+spike_type: "up"
+
+filter:
+- range:
+    jolokia.jmx-metrics.jvm.process_cpu_load:
+        from: 0.03
+        to: 1.0
+
+alert:
+- "debug"

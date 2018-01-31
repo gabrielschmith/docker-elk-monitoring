@@ -38,6 +38,26 @@ services:
       - elk
     depends_on:
       - elasticsearch
+  elastalert:
+    build:
+      context: elastalert/
+    volumes:
+      - ./elastalert/config:/opt/config
+      - ./elastalert/rules:/opt/rules
+      - /opt/alltrade-monitoring/elastalert/logs:/opt/logs
+    environment:
+      - ELASTICSEARCH_HOST: ""
+      - ELASTICSEARCH_PORT: ""
+      - ELASTICSEARCH_TLS: False
+      - ELASTICSEARCH_TLS_VERIFY: False
+    networks:
+      - elk 
+    depends_on:
+      - elasticsearch
+      - kibana
+     links:
+      - elasticsearch:elasticsearchhost
+
 networks:
   elk:
     driver: bridge
