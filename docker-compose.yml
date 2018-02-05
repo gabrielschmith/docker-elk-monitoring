@@ -6,11 +6,13 @@ services:
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - /opt/alltrade-monitoring/elasticsearch/data:/usr/share/elasticsearch/data
+      #- C:/Docker/dockerelkmonitoring/elasticsearch/data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx1g -Xms1g"
+      #ES_JAVA_OPTS: "-Xmx250m -Xms250m"
     networks:
       - elk
   logstash:
@@ -21,8 +23,10 @@ services:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
       - "5000:5000"
+      - "31311:31311"
     environment:
       LS_JAVA_OPTS: "-Xmx1g -Xms1g"
+      #LS_JAVA_OPTS: "-Xmx250m -Xms250m"
     networks:
       - elk
     depends_on:
@@ -38,25 +42,25 @@ services:
       - elk
     depends_on:
       - elasticsearch
-  elastalert:
-    build:
-      context: elastalert/
-    volumes:
-      - ./elastalert/config:/opt/config
-      - ./elastalert/rules:/opt/rules
-      - /opt/alltrade-monitoring/elastalert/logs:/opt/logs
-    environment:
-      - ELASTICSEARCH_HOST: ""
-      - ELASTICSEARCH_PORT: ""
-      - ELASTICSEARCH_TLS: False
-      - ELASTICSEARCH_TLS_VERIFY: False
-    networks:
-      - elk 
-    depends_on:
-      - elasticsearch
-      - kibana
-     links:
-      - elasticsearch:elasticsearchhost
+  # elastalert:
+  #   build:
+  #     context: elastalert/
+  #   volumes:
+  #     - ./elastalert/config:/opt/config
+  #     - ./elastalert/rules:/opt/rules
+  #     - /opt/alltrade-monitoring/elastalert/logs:/opt/logs
+  #   environment:
+  #     - ELASTICSEARCH_HOST: ""
+  #     - ELASTICSEARCH_PORT: ""
+  #     - ELASTICSEARCH_TLS: False
+  #     - ELASTICSEARCH_TLS_VERIFY: False
+  #   networks:
+  #     - elk 
+  #   depends_on:
+  #     - elasticsearch
+  #     - kibana
+  #    links:
+  #     - elasticsearch:elasticsearchhost
 
 networks:
   elk:
