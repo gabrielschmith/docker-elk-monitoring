@@ -12,6 +12,8 @@ services:
       - "9300:9300"
     environment:
       ES_JAVA_OPTS: "-Xmx1g -Xms1g"
+      transport.host: "0.0.0.0"
+      discovery.zen.minimum_master_nodes: 1
       #ES_JAVA_OPTS: "-Xmx250m -Xms250m"
     networks:
       - elk
