@@ -22,7 +22,7 @@ sentinl:
     scriptResults: 50
   settings:
     email:
-      active: false
+      active: true
       user: alltradesystemdevops@gmail.com
       password: all.trade123
       host: smtp.gmail.com
