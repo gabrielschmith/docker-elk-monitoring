@@ -5,3 +5,31 @@
 server.name: kibana
 server.host: "0"
 elasticsearch.url: http://elasticsearch:9200
+
+sentinl:
+  es:
+    host: http://elasticsearch
+    port: 9200
+    timefield: '@timestamp'
+    default_index: watcher
+    type: sentinl-watcher
+    alarm_index: watcher_alarms
+    alarm_type: sentinl-alarm
+    script_type: sentinl-script
+  sentinl:
+    history: 20
+    results: 50
+    scriptResults: 50
+  settings:
+    email:
+      active: false
+      user: alltradesystemdevops@gmail.com
+      password: all.trade123
+      host: smtp.gmail.com
+      ssl: true
+      timeout: 10000  # mail server connection timeout
+    report:
+      active: false
+      tmp_path: /tmp/
+      search_guard: false
+      simple_authentication: false
