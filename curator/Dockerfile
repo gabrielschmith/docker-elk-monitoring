@@ -6,4 +6,4 @@ RUN pip install --quiet elasticsearch-curator
 
 VOLUME [ "/home" ]
 
-ENTRYPOINT [ "sh", "-c", "/usr/local/bin/curator", "--config", "/home/curator.yml" ]
+ENTRYPOINT [ "sh", "-c", "/usr/local/bin/curator", "--config", "/home/curator.yml", "/home/action_file.yml" ]
