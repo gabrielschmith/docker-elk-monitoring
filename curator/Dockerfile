@@ -4,6 +4,9 @@ MAINTAINER Gabriel M. Schmith <gabrielschmith@hotmail.com>
 
 RUN pip install --quiet elasticsearch-curator
 
+COPY ['./config/curator.yml', '/home/curator.yml']
+COPY ['./config/action_file.yml', '/home/action_file.yml']
+
 VOLUME [ "/home" ]
 
 ENTRYPOINT [ "sh", "-c", "/usr/local/bin/curator", "--config", "/home/curator.yml", " /home/action_file.yml" ]
