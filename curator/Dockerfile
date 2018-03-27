@@ -2,6 +2,8 @@
 FROM python:2.7.8-slim
 MAINTAINER Gabriel M. Schmith <gabrielschmith@hotmail.com>
 
+RUN mkdir /home
+
 RUN pip install --quiet elasticsearch-curator
 
 COPY ./curator/config/curator.yml /home/curator.yml
