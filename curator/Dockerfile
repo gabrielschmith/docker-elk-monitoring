@@ -18,6 +18,8 @@ RUN pip install elasticsearch-curator
 
 COPY ./curator/docker-entrypoint.sh /
 
+RUN chmod 777 /docker-entrypoint.sh
+
 ENV INTERVAL_IN_HOURS=24
 ENV PATH_CONFIG=/root/.curator/curator.yml
 ENV PATH_ACTIONS=/root/.curator/action_file.yml
