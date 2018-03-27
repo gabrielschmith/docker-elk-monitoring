@@ -46,7 +46,7 @@ services:
      build:
      context: curator/
      volumes:
-       - ./curator/config/:~/.curator:ro
+       - ./curator/config/:/root/.curator:ro
      ports:
        - "5601:5601"
      networks:

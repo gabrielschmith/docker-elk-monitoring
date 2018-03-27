@@ -8,7 +8,7 @@ actions:
   1:
     action: close
     description: >-
-      Close indices older than 30 days (based on index name), for logstash-
+      Close indices older than 7 days (based on index name), for logstash-
       prefixed indices.
     options:
       delete_aliases: False
@@ -22,11 +22,29 @@ actions:
       direction: older
       timestring: '%Y.%m.%d'
       unit: days
-      unit_count: 30
+      unit_count: 7
   2:
     action: close
     description: >-
-      Close indices older than 30 days (based on index name), for watcher_alarms-
+      Close indices older than 5 days (based on index name), for metricbeat-
+      prefixed indices.
+    options:
+      delete_aliases: False
+      disable_action: True
+    filters:
+    - filtertype: pattern
+      kind: prefix
+      value: metricbeat-
+    - filtertype: age
+      source: name
+      direction: older
+      timestring: '%Y.%m.%d'
+      unit: days
+      unit_count: 5
+  3:
+    action: close
+    description: >-
+      Close indices older than 7 days (based on index name), for watcher_alarms-
       prefixed indices.
     options:
       delete_aliases: False
@@ -40,4 +58,4 @@ actions:
       direction: older
       timestring: '%Y.%m.%d'
       unit: days
-      unit_count: 30
+      unit_count: 7
