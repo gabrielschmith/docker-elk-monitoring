@@ -6,6 +6,13 @@ server.name: kibana
 server.host: "0"
 elasticsearch.url: http://elasticsearch:9200
 
+## Custom configuration
+#
+elasticsearch.username: "kibanaserver"
+elasticsearch.password: "kibanaserver"
+
+searchguard.cookie.password: "Asd12kaskdDa29f850d5b6534ec48a6d7800cbc2b2"
+
 sentinl:
   es:
     host: http://elasticsearch
