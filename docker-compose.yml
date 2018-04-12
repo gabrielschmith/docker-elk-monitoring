@@ -1,18 +1,25 @@
 version: '2'
 services:
+  redis:
+    build:
+      context: redis/
+    ports:
+      - "6379:6379"
+    networks:
+      - elk
   elasticsearch:
     build:
       context: elasticsearch/
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - /opt/alltrade-monitoring/elasticsearch/data:/usr/share/elasticsearch/data
+      - /tmp/alltrade-monitoring/elasticsearch/data:/usr/share/elasticsearch/data
       #- C:/Docker/dockerelkmonitoring/elasticsearch/data2:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: "-Xmx1g -Xms1g"
-      #ES_JAVA_OPTS: "-Xmx250m -Xms250m"
+      #ES_JAVA_OPTS: "-Xmx1g -Xms1g"
+      ES_JAVA_OPTS: "-Xmx250m -Xms250m"
     networks:
       - elk
   logstash:
@@ -25,12 +32,13 @@ services:
       - "5000:5000"
       - "31311:31311"
     environment:
-      LS_JAVA_OPTS: "-Xmx1g -Xms1g"
-      #LS_JAVA_OPTS: "-Xmx250m -Xms250m"
+      #LS_JAVA_OPTS: "-Xmx1g -Xms1g"
+      LS_JAVA_OPTS: "-Xmx250m -Xms250m"
     networks:
       - elk
     depends_on:
       - elasticsearch
+      - redis
   kibana:
     build:
       context: kibana/
@@ -44,11 +52,9 @@ services:
       - elasticsearch
   curator:
      build:
-     context: curator/
+      context: curator/
      volumes:
        - ./curator/config/:/root/.curator:ro
-     ports:
-       - "5601:5601"
      networks:
        - elk
      depends_on:

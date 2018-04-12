@@ -16,7 +16,7 @@ RUN groupadd -r curator && useradd -r -g curator curator
 
 RUN ["pip", "install", "elasticsearch-curator"]
 
-COPY ./curator/docker-entrypoint.sh /
+COPY ./docker-entrypoint.sh /
 
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 

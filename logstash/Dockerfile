@@ -1,5 +1,6 @@
 # https://github.com/elastic/logstash-docker
 FROM docker.elastic.co/logstash/logstash-oss:6.1.0
+MAINTAINER Gabriel M. Schmith <gabrielschmith@hotmail.com>
 
 ENV ELASTICSEARCH_HOST=elasticsearch:9200
 ENV ELASTICSEARCH_USER=logstash
