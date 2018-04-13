@@ -17,7 +17,10 @@ RUN elasticsearch-plugin install --batch com.floragunn:search-guard-6:6.1.0-21.0
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
 # # EntryPoint
-ENTRYPOINT ["/docker-entrypoint.sh"]
+#ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# Search Guard must be initialized after Elasticsearch is started
+CMD ["sleep 60", "&&" "bin/init_sg.sh"]
 
 # Add your elasticsearch plugins setup here
 # Example: RUN elasticsearch-plugin install analysis-icu
