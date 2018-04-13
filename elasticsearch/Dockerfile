@@ -2,9 +2,9 @@
 FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
 MAINTAINER Gabriel M. Schmith <gabrielschmith@hotmail.com>
 
-COPY config/sg/ config/sg/
-COPY bin/ bin/
-COPY docker-entrypoint.sh /
+COPY ./config/sg/ config/sg/
+COPY ./bin/ bin/
+COPY ./docker-entrypoint.sh /
 
 # Search Guard plugin
 # https://github.com/floragunncom/search-guard/wiki
