@@ -20,7 +20,7 @@ RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 #ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Search Guard must be initialized after Elasticsearch is started
-CMD ["sleep 60", "&&" "bin/init_sg.sh"]
+#CMD ["sleep 60", "&&" "bin/init_sg.sh"]
 
 # Add your elasticsearch plugins setup here
 # Example: RUN elasticsearch-plugin install analysis-icu
