@@ -2,9 +2,9 @@
 FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.1.0
 MAINTAINER Gabriel M. Schmith <gabrielschmith@hotmail.com>
 
-COPY ./config/sg/ config/sg/
-COPY ./bin/ bin/
-COPY ./docker-entrypoint.sh /
+COPY ./elasticsearch/config/sg/ config/sg/
+COPY ./elasticsearch/bin/ bin/
+COPY ./elasticsearch/docker-entrypoint.sh /
 
 # Search Guard plugin
 # https://github.com/floragunncom/search-guard/wiki
@@ -14,10 +14,10 @@ RUN elasticsearch-plugin install --batch com.floragunn:search-guard-6:6.1.0-21.0
 	&& chmod -R go= config/sg/
 
 # Permissions to docker entrypoint
-# RUN ["chmod", "+x", "/docker-entrypoint.sh"]
+RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 
 # # EntryPoint
-# ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Add your elasticsearch plugins setup here
 # Example: RUN elasticsearch-plugin install analysis-icu
