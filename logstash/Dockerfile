@@ -16,9 +16,5 @@ ENV REDIS_KEY=metricbeat
 # Beats
 ENV BEATS_PORT=5000
 
-# Http
-ENV HTTP_HOST=0.0.0.0
-ENV HTTP_PORT=31311
-
 # Add your logstash plugins setup here
 # Example: RUN logstash-plugin install logstash-filter-json
