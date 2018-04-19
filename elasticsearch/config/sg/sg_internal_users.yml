@@ -1,10 +1,10 @@
 # This is the internal user database
 # The hash value is a bcrypt hash and can be generated with plugin/tools/hash.sh
 
-#password is: admin
+#password is: admincurator
 admincurator:
   readonly: false
-  hash: $2a$12$VcCDgh2NDk07JGN0rjGbM.Ad41qVR/YFJcgHp0UGns5JDymv..TOG
+  hash: $2y$12$kB4VhzfYI87LI4CHGsAa/Oq9murNz7qSVbEhfTGD0pCTdvs0L26Ru
   roles:
     - admin
 
@@ -47,3 +47,11 @@ snapshotrestore:
   hash: $2y$12$DpwmetHKwgYnorbgdvORCenv4NAK8cPUg8AI6pxLCuWf/ALc0.v7W
   roles:
     - snapshotrestore
+ 
+#password is: all.trade123
+consultoria:
+  readonly: true
+  hash: $2y$12$WEvkuiJLZvjmMPLJG6SaqOio4zsLbUFZTlKp.RX.b3wAS6jAPWfFW
+  roles:
+    - kibanauser
+    - readall
