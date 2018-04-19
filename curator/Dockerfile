@@ -23,6 +23,8 @@ RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 ENV INTERVAL_IN_HOURS=24
 ENV PATH_CONFIG=/root/.curator/curator.yml
 ENV PATH_ACTIONS=/root/.curator/actions.yml
+ENV ELASTICSEARCH_USER=admincurator
+ENV ELASTICSEARCH_PASS=admincurator
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
