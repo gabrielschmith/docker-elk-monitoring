@@ -1,0 +1,101 @@
+version: '2'
+services:
+  logstash:
+    scale: 2
+    start_on_create: true
+  logstash-lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: logstash
+        source_port: 5000
+        target_port: 5000
+      - priority: 2
+        protocol: http
+        service: logstash
+        source_port: 31311
+        target_port: 31311
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  elasticsearch:
+    scale: 1
+    start_on_create: true
+  elasticsearch-lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - path: ''
+        priority: 1
+        protocol: http
+        service: elasticsearch
+        source_port: 9200
+        target_port: 9200
+      - priority: 2
+        protocol: tcp
+        service: elasticsearch
+        source_port: 9300
+        target_port: 9300
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  redis-lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: redis
+        source_port: 6379
+        target_port: 6379
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  kibana-lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      port_rules:
+      - priority: 1
+        protocol: http
+        service: kibana
+        source_port: 5601
+        target_port: 5601
+    health_check:
+      response_timeout: 2000
+      healthy_threshold: 2
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  kibana:
+    scale: 1
+    start_on_create: true
+  redis:
+    scale: 1
+    start_on_create: true
