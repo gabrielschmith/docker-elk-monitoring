@@ -8,18 +8,6 @@ searchguard:
         internalProxies: '192\.168\.0\.20'
                 
     authc:
-      proxy_auth_domain:
-        http_enabled: true
-        transport_enabled: true
-        order: 0
-        http_authenticator:
-          type: proxy
-          challenge: false
-          config:
-            user_header: "x-proxy-user"
-            roles_header: "x-proxy-roles"
-        authentication_backend:
-          type: noop
       basic_internal_auth_domain:
         order: 1
         http_authenticator:
