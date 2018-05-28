@@ -2,11 +2,7 @@ searchguard:
   dynamic:
     http:
       xff:
-        enabled: true
-        remoteIpHeader: 'x-forwarded-for'
-        proxiesHeader:   'x-forwarded-by'
-        internalProxies: '192\.168\.0\.20'
-                
+        enabled: false                
     authc:
       basic_internal_auth_domain:
         order: 1
