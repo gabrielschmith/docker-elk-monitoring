@@ -10,7 +10,9 @@ elasticsearch.url: http://elasticsearch:9200
 #
 elasticsearch.username: "kibanaserver"
 elasticsearch.password: "kibanaserver"
+elasticsearch.requestHeadersWhitelist: [ "authorization", "x-forwarded-for", "x-forwarded-by", "x-proxy-user", "x-proxy-roles" ]
 
+searchguard.basicauth.enabled: false
 searchguard.cookie.password: "Asd12kaskdDa29f850d5b6534ec48a6d7800cbc2b2"
 searchguard.basicauth.login.brandimage: https://s3.amazonaws.com/alltrade-files/logo.jpg
 searchguard.basicauth.login.title: Por favor faça o login para kibana.
