@@ -12,6 +12,9 @@ elasticsearch.username: "kibanaserver"
 elasticsearch.password: "kibanaserver"
 
 searchguard.cookie.password: "Asd12kaskdDa29f850d5b6534ec48a6d7800cbc2b2"
+searchguard.basicauth.login.brandimage: https://s3.amazonaws.com/alltrade-files/logo.jpg
+searchguard.basicauth.login.title: Por favor faça o login para kibana.
+searchguard.basicauth.login.subtitle: Se você esqueceu seu nome de usuário ou senha, por favor, pergunte ao seu administrador de sistema.
 
 sentinl:
   es:
