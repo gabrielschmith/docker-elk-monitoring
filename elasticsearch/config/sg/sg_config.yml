@@ -4,7 +4,19 @@ searchguard:
       xff:
         enabled: false
     authc:
+      proxy_auth_domain:
+        enabled: true
+        order: 0
+        http_authenticator:
+          type: proxy
+          challenge: false
+          config:
+            user_header: "x-proxy-user"
+            roles_header: "x-proxy-roles"
+        authentication_backend:
+          type: noop
       basic_internal_auth_domain:
+        order: 1
         http_authenticator:
           type: basic
         authentication_backend:
