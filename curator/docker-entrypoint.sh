@@ -8,7 +8,7 @@ fi
 
 # Step down via gosu  
 if [ "$1" = 'curator' ]; then
-	while true; do curator --config $PATH_CONFIG $PATH_ACTIONS; set -e; sleep $(( 60*60*INTERVAL_IN_HOURS )); set +e; done
+	while true; do curator --http_auth $ELASTICSEARCH_USER:$ELASTICSEARCH_PASS --config $PATH_CONFIG $PATH_ACTIONS; set -e; sleep $(( 60*60*INTERVAL_IN_HOURS )); set +e; done
 fi
 
 # As argument is not related to curator,
