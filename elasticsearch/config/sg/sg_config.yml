@@ -5,7 +5,6 @@ searchguard:
         enabled: false
     authc:
       proxy_auth_domain:
-        enabled: true
         order: 0
         http_authenticator:
           type: proxy
