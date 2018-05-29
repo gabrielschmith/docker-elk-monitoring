@@ -4,9 +4,8 @@
 #
 server.name: kibana
 server.host: "0"
-http.cors.enabled: true
-http.cors.allow-origin: "*"
-
+server.cors.origin: "*"
+ 
 elasticsearch.url: http://elasticsearch:9200
 
 ## Custom configuration
