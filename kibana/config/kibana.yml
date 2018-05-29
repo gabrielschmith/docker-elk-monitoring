@@ -6,7 +6,7 @@ server.name: kibana
 server.host: "0"
 server.cors: true
 server.cors.origin: ['*']
-server.cors.additionalHeaders: origin: ['*']
+server.cors.additionalHeader.origin: ['*']
  
 elasticsearch.url: http://elasticsearch:9200
 
